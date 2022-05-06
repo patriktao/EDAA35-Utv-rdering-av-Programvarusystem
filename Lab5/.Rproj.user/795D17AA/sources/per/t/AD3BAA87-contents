@@ -1,0 +1,50 @@
+source("https://fileadmin.cs.lth.se/cs/Education/EDAA35/R_resources.R")
+
+plotresult <- function(file, start = 1) {
+  data <- read.csv(file)
+  data <- data[start:nrow(data),]
+  #plot(data$javaSortingAlgorithm, type="l")
+  #plot(data$mySortingAlgorithm, type="l")
+  #return(mean(data$javaSortingAlgorithm))
+  return(mean(data$mySortingAlgorithm))
+}
+
+meanValue <- function(counter){
+  meanValues <- vector()
+  for(i in 1:counter){
+      #data1
+      system("java -cp Lab5Java/bin ExecutionTime data1.txt result.txt 600")
+      #system("java -Xint -cp Lab5Java/bin ExecutionTime data1.txt result.txt 600")
+      #data2
+      #system("java -cp Lab5Java/bin ExecutionTime data2.txt result.txt 600")
+      #system("java -Xint -cp Lab5Java/bin ExecutionTime data2.txt result.txt 600")
+      meanValues <- append(meanValues, plotresult("result.txt"))
+  }
+  mean <- mean(meanValues)
+  median <- median(meanValues)
+  cI <- confidenceInterval(meanValues, confidenceLevel=0.95)
+  temp <- c(summary(meanValues), cI)
+  return(temp)
+}
+
+
+tValues <- function(counter){
+  avgJava <- vector()
+  avgMySort <- vector()
+  for(i in 1:counter){
+    #data1
+    #system("java -cp Lab5Java/bin ExecutionTime data1.txt result.txt 600")
+    #system("java -Xint -cp Lab5Java/bin ExecutionTime data1.txt result.txt 600")
+    #data2
+    system("java -cp Lab5Java/bin ExecutionTime data2.txt result.txt 600")
+    #system("java -Xint -cp Lab5Java/bin ExecutionTime data2.txt result.txt 600")
+    data <- read.csv("result.txt")
+    data <- data[1:nrow(data),]
+    avgJava <- append(avgJava, mean(data$javaSortingAlgorithm))
+    avgMySort <- append(avgMySort, mean(data$mySortingAlgorithm))
+  }
+  tTest <- t.test(avgJava, avgMySort)
+  return(tTest)
+}
+
+
