@@ -8,11 +8,12 @@ import java.io.IOException;
 public class GenerateIntegers {
 
     public static void main(String[] args) {
-        new GenerateIntegers().run(Integer.parseInt(args[0]));
+        new GenerateIntegers().run(args);
     }
 
-    public void run(int iterations) {
-        File output = new File("integer_data");
+    public void run(String[] args) {
+        File output = new File(args[0]);
+        int iterations = Integer.parseInt(args[1]);
         try {
             BufferedWriter outputWriter = new BufferedWriter(new FileWriter(output));
             for (int i = 0; i < iterations; i++) {
