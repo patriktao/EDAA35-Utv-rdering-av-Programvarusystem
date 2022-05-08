@@ -1,6 +1,6 @@
 {
     "id": "218BE9F9",
-    "path": "~/EDAA35/Plots Lab 5.R",
+    "path": "~/GitHub/EDAA35 Utvärdering av Programvarusystem/Lab5/Plots Lab 5.R",
     "project_path": "Plots Lab 5.R",
     "type": "r_source",
     "hash": "1013238967",
@@ -12,7 +12,7 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "10,66",
+        "cursorPosition": "8,0",
         "scrollLine": "0"
     },
     "folds": "",
