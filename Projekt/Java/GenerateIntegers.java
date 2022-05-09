@@ -36,7 +36,7 @@ public class GenerateIntegers {
             		}
             	}
             }
-            else if (args[2].equals("sorted")) {
+            else if (args[2].equals("ordered")) {
             	if (args[3].equals("reverse")) {
             		for (int i = iterations; i > 0; i--) {
     	                outputWriter.append(i + "\n");
