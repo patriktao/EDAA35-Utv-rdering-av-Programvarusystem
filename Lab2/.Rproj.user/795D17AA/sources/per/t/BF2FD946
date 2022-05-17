@@ -1,6 +1,6 @@
 {
     "id": "BF2FD946",
-    "path": "~/Lab2/Lab2.R",
+    "path": "~/GitHub/EDAA35 Utvärdering av Programvarusystem/Lab2/Lab2.R",
     "project_path": "Lab2.R",
     "type": "r_source",
     "hash": "1417123861",
@@ -12,8 +12,8 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "59,0",
-        "scrollLine": "16"
+        "cursorPosition": "19,32",
+        "scrollLine": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1645957173,

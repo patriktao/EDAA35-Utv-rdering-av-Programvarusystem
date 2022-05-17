@@ -1,10 +1,10 @@
 source("https://fileadmin.cs.lth.se/cs/Education/EDAA35/R_resources.R")
 
 
-createPlots <- function(file, start = 1) {
+createPlots <- function(file, name) {
   data <- read.csv(file)
-  data <- data[start:nrow(data),]
-  pdf("data_random_50.pdf")
+  data <- data[1:nrow(data),]
+  pdf(name)
   par(mfrow=c(2,1))
   plot(data$mergeSort,  type="l", main="MergeSort", xlab="Iterations", ylab="Time (ns)")
   plot(data$quickSort, type="l", main="QuickSort", xlab="Iterations", ylab="Time (ns)")
@@ -15,14 +15,14 @@ createPlots <- function(file, start = 1) {
 meanSortingValues <- function(file, start=1){
   data <- read.csv(file)
   data <- data[start:nrow(data),]
-  return(mean(data$quickSort))
+  return(mean(data$mergeSort))
 }
 
 meanValue <- function(counter){
   meanValues <- vector()
   for(i in 1:counter){
-    system("java IntegerSort data_ordered_500 res_ordered_500 100")
-    meanValues <- append(meanValues, meanSortingValues("res_ordered_500"))
+    system("java IntegerSort data_random_1000 res_random_1000 500")
+    meanValues <- append(meanValues, meanSortingValues("res_random_1000"))
   }
   mean <- mean(meanValues)
   median <- median(meanValues)
@@ -32,15 +32,16 @@ meanValue <- function(counter){
 }
 
 tValues <- function(counter){
-  avgHeap <- vector()
   avgMerge <- vector()
+  avgQuick <- vector()
   for(i in 1:counter){
-    data <- read.csv("result.txt")
+    system("java IntegerSort data_semi-reverse_500 res_semi-reverse_500 100")
+    data <- read.csv("res_semi-reverse_500")
     data <- data[1:nrow(data),]
-    avgJava <- append(avgJava, mean(data$javaSortingAlgorithm))
-    avgMySort <- append(avgMySort, mean(data$mySortingAlgorithm))
+    avgMerge <- append(avgMerge, mean(data$mergeSort))
+    avgQuick <- append(avgQuick, mean(data$quickSort))
   }
-  tTest <- t.test(avgJava, avgMySort)
+  tTest <- t.test(avgMerge, avgQuick)
   return(tTest)
 }
 
