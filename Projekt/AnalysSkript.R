@@ -4,10 +4,10 @@ source("https://fileadmin.cs.lth.se/cs/Education/EDAA35/R_resources.R")
 createPlots <- function(file, name) {
   data <- read.csv(file)
   data <- data[1:nrow(data),]
-  pdf(name)
+  png(name)
   par(mfrow=c(2,1))
-  plot(data$mergeSort,  type="l", main="MergeSort", xlab="Iterations", ylab="Time (ns)")
-  plot(data$quickSort, type="l", main="QuickSort", xlab="Iterations", ylab="Time (ns)")
+  plot(data$mergeSort,  type="l", main="MergeSort", xlab="Iterations", ylab="Time (ns)", col="blue")
+  plot(data$quickSort, type="l", main="QuickSort", xlab="Iterations", ylab="Time (ns)", col="darkgreen")
   dev.off()
   "finished creating plots"
 }

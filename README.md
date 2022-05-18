@@ -17,5 +17,5 @@ java integerSort <name of inputfile> <name of outputfile> <numbers of iterations
 
 #### Generate Plots
 ```shell
-createPlots(file="<result-file-name>", name="<nameofpdf>.pdf")
+createPlots(file="<result-file-name>", name="<nameofpng>.png")
 ```
