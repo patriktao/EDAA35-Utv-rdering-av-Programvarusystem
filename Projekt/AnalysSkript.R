@@ -10,6 +10,12 @@ createPlots <- function(file, name) {
   plot(data$quickSort, type="l", main="QuickSort", xlab="Iterations", ylab="Time (ns)", col="darkgreen")
   dev.off()
   "finished creating plots"
+  #plot(data$mergeSort,  type="l", xlab="Iterations", ylab="Time (ns)", col="blue", frame=TRUE)
+  #lines(data$quickSort, type="l", xlab="Iterations", ylab="Time (ns)", col="red")
+  #legend("topright", legend=c("MergeSort", "QuickSort"),
+  #       col=c("blue", "red"), lty = 1:1, cex=0.8)
+  #dev.off()
+  "finished creating plots"
 }
 
 meanSortingValues <- function(file, start=1){
